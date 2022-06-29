@@ -5,14 +5,17 @@ class EngineIC :
     public IEngine
 {
 private:
-    double heatingVelocity(const double & momentum, const double & velocity);
-    double calculateVelocity(const double & momentum, const double & velocity, const double & dt);
+    double heatingVelocity(const double & velocity);
+    double calculateVelocity(const double & velocity, const double & dt);
     double coolingVelocity(const double & ambitientT, const double & engineT);
     
     EnginConfiguration mConfiguration;
+    double mCurrentVelocity;
+    double mAmbitientT;
+    double mCurrentEngineT;
 
 public:
-    EngineIC();
+    EngineIC(double const & ambitientT);
 
     /**
     * @brief Function to start engine.
