@@ -15,10 +15,10 @@ private:
     double mCurrentEngineT;
 
 public:
-    EngineIC(double const & ambitientT);
+    EngineIC();
 
     /**
-    * @brief Function to start engine.
+    * @brief Function to start calculating step.
     * @param dt - time step.
     * @return current engine temerature.
     */
@@ -28,5 +28,21 @@ public:
     * @brief Function to initialize engine.
     */
     void initializeEngine(const EnginConfiguration & configuration) override;
+
+    /**
+    * @brief Function to check if engine is overheated.
+    */
+    bool isOverHeated() override;
+
+    /**
+    * @brief Function to get current engine temperature.
+    */
+    double getCurrentT() override;
+
+    /**
+    * @brief Function to set ambitient temperature;
+    * @param temp - ambitient temperature.
+    */
+    void setAmbitientT(const double & temp) override;
 };
 

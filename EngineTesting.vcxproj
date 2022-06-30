@@ -127,13 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleUI.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="EngineIC.cpp" />
     <ClCompile Include="EngineTesting.cpp" />
+    <ClCompile Include="TestStand.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleUI.hpp" />
+    <ClInclude Include="Controller.hpp" />
     <ClInclude Include="DataInterp.hpp" />
-    <ClInclude Include="EngineIC.h" />
+    <ClInclude Include="EngineIC.hpp" />
     <ClInclude Include="IEngine.hpp" />
+    <ClInclude Include="TestStand.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

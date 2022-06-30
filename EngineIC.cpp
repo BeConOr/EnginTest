@@ -1,13 +1,19 @@
-#include "EngineIC.h"
+#include "EngineIC.hpp"
 
 double EngineIC::heatingVelocity(const double & velocity)
 {
-    return mConfiguration.momentumEq.getMomentum(velocity)*mConfiguration.heatByMoment 
-        + velocity*velocity*mConfiguration.heatByVelocity;
+    return mConfiguration.momentumEq.getMomentum(velocity) * mConfiguration.heatByMoment 
+        + velocity*velocity * mConfiguration.heatByVelocity;
 }
 
 double EngineIC::calculateVelocity(const double & velocity, const double & dt)
 {
+    double newVelocity = velocity + mConfiguration.momentumEq.getMomentum(velocity) * dt / mConfiguration.massMoment;
+
+    if (newVelocity > mConfiguration.momentumEq.velocity.back()) {
+        return mConfiguration.momentumEq.velocity.back();
+    }
+
     return velocity + mConfiguration.momentumEq.getMomentum(velocity) * dt / mConfiguration.massMoment;
 }
 
@@ -16,11 +22,11 @@ double EngineIC::coolingVelocity(const double & ambitientT, const double & engin
     return mConfiguration.coolingCoef * (ambitientT - engineT);
 }
 
-EngineIC::EngineIC(double const & ambitientT)
+EngineIC::EngineIC()
     : mConfiguration()
-    , mAmbitientT(ambitientT)
+    , mAmbitientT(0.)
     , mCurrentVelocity(0.)
-    , mCurrentEngineT(ambitientT)
+    , mCurrentEngineT(0.)
 {
 }
 
@@ -35,4 +41,20 @@ double EngineIC::startStep(const double & dt)
 void EngineIC::initializeEngine(const EnginConfiguration & configuration)
 {
     mConfiguration = configuration;
+}
+
+bool EngineIC::isOverHeated()
+{
+    return mCurrentEngineT > mConfiguration.overHeatTemp;
+}
+
+double EngineIC::getCurrentT()
+{
+    return mCurrentEngineT;
+}
+
+void EngineIC::setAmbitientT(const double & temp)
+{
+    mAmbitientT = temp;
+    mCurrentEngineT = temp;
 }

@@ -16,4 +16,20 @@ public:
     * @brief Function to initialize engine.
     */
     virtual void initializeEngine(const EnginConfiguration & configuration) = 0;
+
+    /**
+    * @brief Function to check if engine is overheated.
+    */
+    virtual bool isOverHeated() = 0;
+
+    /**
+    * @brief Function to get current engine temperature.
+    */
+    virtual double getCurrentT() = 0;
+
+    /**
+    * @brief Function to set ambitient temperature;
+    * @param temp - ambitient temperature.
+    */
+    virtual void setAmbitientT(const double& temp) = 0;
 };
