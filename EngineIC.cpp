@@ -14,7 +14,7 @@ double EngineIC::calculateVelocity(const double & velocity, const double & dt)
         return mConfiguration.momentumEq.velocity.back();
     }
 
-    return velocity + mConfiguration.momentumEq.getMomentum(velocity) * dt / mConfiguration.massMoment;
+    return newVelocity;
 }
 
 double EngineIC::coolingVelocity(const double & ambitientT, const double & engineT)

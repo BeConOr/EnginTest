@@ -13,42 +13,54 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Stand">
+      <UniqueIdentifier>{058ea554-5696-4d76-b1b2-1be6e6ef625f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\UI">
+      <UniqueIdentifier>{77d8127b-53b4-4cc8-8c05-f8ba0b9af8d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Stand">
+      <UniqueIdentifier>{4021f42b-5e90-4622-9b08-3f32262d7dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\UI">
+      <UniqueIdentifier>{832a81d4-e707-498b-8a0d-a309adfc3ab0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EngineTesting.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="EngineIC.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Stand</Filter>
     </ClCompile>
     <ClCompile Include="TestStand.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Controller.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Stand</Filter>
     </ClCompile>
     <ClCompile Include="ConsoleUI.cpp">
+      <Filter>Исходные файлы\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Исходные файлы\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTesting.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataInterp.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="IEngine.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="TestStand.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller.hpp">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Stand</Filter>
     </ClInclude>
     <ClInclude Include="EngineIC.hpp">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Stand</Filter>
+    </ClInclude>
+    <ClInclude Include="IEngine.hpp">
+      <Filter>Файлы заголовков\Stand</Filter>
+    </ClInclude>
+    <ClInclude Include="TestStand.hpp">
+      <Filter>Файлы заголовков\Stand</Filter>
     </ClInclude>
     <ClInclude Include="ConsoleUI.hpp">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.hpp">
+      <Filter>Файлы заголовков\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,10 +9,10 @@ struct MomentumPerVelocity {
         if(vel < 0.) {
             return momentum[0];
         }
-        for(size_t i(0); i < momentum.size(); ++i) {
+        for(size_t i(1); i < momentum.size(); ++i) {
             if(vel < velocity[i]) {
                 double k = (momentum[i] - momentum[i - 1]) / (velocity[i] - velocity[i - 1]);
-                return k * vel + momentum[i];
+                return k * (vel - velocity[i - 1]) + momentum[i - 1];
             }
         }
         return momentum.back();

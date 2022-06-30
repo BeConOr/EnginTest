@@ -3,14 +3,14 @@
 
 Controller::Controller()
 	:mStand()
-	, mEngine(std::make_shared<IEngine>())
+	, mEngine(std::make_shared<EngineIC>())
+	, mLogger()
 {
 }
 
 void Controller::run()
 {
 	double ambitientT(0.);
-	mEngine = std::make_shared<EngineIC>();
 	
 	EnginConfiguration configuration;
 	configuration.massMoment = 10.;
@@ -34,12 +34,26 @@ void Controller::run()
 	configuration.momentumEq.velocity.push_back(300.0);
 
 
+	mLogger.writeAccesInformation(systemMessage::TEMP_REQ);
 	std::cin >> ambitientT;
 
 	mEngine->setAmbitientT(ambitientT);
 	mEngine->initializeEngine(configuration);
+	mStand.setNewEngine(mEngine);
 
 	mStand.changeTimeStep(0.001);
 
-	double overHeatingTime = mStand.startTest();
+	mLogger.writeAccesInformation(systemMessage::START_NOTION);
+	switch(mStand.startTest()) {
+	case 0:
+		mLogger.writeErrorInformation(systemMessage::OVERHEATED);
+		mLogger.writeErrorInformation(systemMessage::OVERHEATED_TIME);
+		mLogger.writeInformation(mStand.getCurrentTIme());
+		break;
+	case 1:
+		mLogger.writeErrorInformation(systemMessage::PLATO_WARN);
+		mLogger.writeErrorInformation(systemMessage::PLATO_TEMP);
+		mLogger.writeInformation(mEngine->getCurrentT());
+		break;
+	};
 }

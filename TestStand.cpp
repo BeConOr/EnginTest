@@ -1,22 +1,29 @@
 #include "TestStand.hpp"
+#include <math.h>
 
 TestStand::TestStand()
-	: mEngine(std::make_shared<IEngine>())
+	: mEngine(nullptr)
 	, mTimeStep(0.)
+	, mTime(0.)
 {
 }
 
-double TestStand::startTest()
+int TestStand::startTest()
 {
-	double time(0.);
+	mTime = 0.;
+	double engineCurrentT(mEngine->getCurrentT());
 
 	while (!mEngine->isOverHeated()) {
-		mEngine->startStep(mTimeStep);
 
-		time += mTimeStep;
+		if(abs(engineCurrentT - mEngine->startStep(mTimeStep)) < PRECIS) {
+			return 1;
+		}
+
+		engineCurrentT = mEngine->getCurrentT();
+		mTime += mTimeStep;
 	}
 
-	return time;
+	return 0;
 }
 
 void TestStand::changeTimeStep(const double& timeStep)
@@ -27,4 +34,9 @@ void TestStand::changeTimeStep(const double& timeStep)
 void TestStand::setNewEngine(const std::shared_ptr<IEngine>& engine)
 {
 	mEngine = engine;
+}
+
+double TestStand::getCurrentTIme()
+{
+	return mTime;
 }

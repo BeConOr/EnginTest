@@ -5,6 +5,11 @@ void ConsoleUI::writeInformation(const std::string& inform) const
     std::cout << inform;
 }
 
+void ConsoleUI::writeInformation(const double & inform) const
+{
+    std::cout << inform << std::endl;
+}
+
 void ConsoleUI::writeErrorInformation(const std::string& inform) const
 {
     colorWrapper(inform, 0x0004);

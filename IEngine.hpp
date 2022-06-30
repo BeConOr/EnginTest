@@ -1,6 +1,9 @@
 #pragma once
 #include "DataInterp.hpp"
 
+/**
+* @brief Engine interface.
+*/
 class IEngine {
 public:
     virtual ~IEngine() = default;

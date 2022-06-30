@@ -1,6 +1,9 @@
 #pragma once
 #include "IEngine.hpp"
 
+/**
+* @brief Class that simulate internal combustion engine.
+*/
 class EngineIC :
     public IEngine
 {
